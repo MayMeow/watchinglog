@@ -54,10 +54,75 @@ a:hover {
   color: $primary;
 }
 
-.navbar {
-  background: rgba(5, 5, 10, 0.65);
+.site-header {
+  margin-bottom: 2.5rem;
+  padding: 1.25rem 0;
+  background: rgba(6, 8, 15, 0.8);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 1.5rem 2.5rem rgba(3, 4, 10, 0.45);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.site-brand {
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.site-header__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+  color: rgba($body-color, 0.7);
+}
+
+.site-header__note {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+}
+
+.site-chip {
+  padding: 0.3rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(120deg, rgba($primary, 0.85), rgba($secondary, 0.65));
+  color: #0b0704;
+  font-weight: 600;
+  box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.35);
+}
+
+.site-footer {
+  margin-top: 4rem;
+  padding: 1.5rem 0 2rem;
+  background: rgba(6, 7, 12, 0.85);
   backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  box-shadow: 0 -1.5rem 2.5rem rgba(3, 4, 10, 0.4);
+}
+
+.site-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  color: rgba($body-color, 0.7);
+}
+
+.site-footer__note {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  color: rgba($body-color, 0.6);
 }
 
 main.container {

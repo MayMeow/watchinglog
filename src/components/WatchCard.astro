@@ -32,7 +32,6 @@ const posterUrl = data.posterUrl;
       <a href={`/watch/${slug}/`}>{data.title}</a>
     </h2>
     {data.watchDate && <p class="watch-card__date">Watched {data.watchDate}</p>}
-    {readableExcerpt && <p class="watch-card__excerpt">{readableExcerpt}</p>}
     {tags.length > 0 && (
       <div class="watch-card__tags">
         {tags.map((tag) => (

@@ -75,7 +75,8 @@ async function main() {
       })
     : null;
 
-  const slug = createSlug(options.title, options.watchDate ?? options.year);
+  const entryTitle = tmdbPayload?.title ?? options.title;
+  const slug = createSlug(entryTitle, options.watchDate ?? options.year);
   const now = new Date().toISOString();
   const noteBody = options.notes?.trim();
   const body = noteBody || tmdbPayload?.overview || "";
@@ -83,7 +84,7 @@ async function main() {
   const description = tmdbPayload?.overview ?? noteBody ?? undefined;
 
   const frontmatter = {
-    title: options.title,
+    title: entryTitle,
     mediaType: resolvedMediaType,
     status: options.status,
     rating: options.rating,
