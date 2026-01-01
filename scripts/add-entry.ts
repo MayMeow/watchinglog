@@ -33,6 +33,7 @@ type TmdbNormalized = {
   posterUrl?: string;
   backdropUrl?: string;
   releaseDate?: string;
+  raw: Record<string, unknown>;
 };
 
 const program = new Command();
@@ -96,6 +97,7 @@ async function main() {
     posterUrl: options.posterUrl ?? tmdbPayload?.posterUrl,
     backdropUrl: options.backdropUrl ?? tmdbPayload?.backdropUrl,
     description,
+    tmdbRaw: tmdbPayload?.raw,
     createdAt: now,
     updatedAt: now
   };
@@ -142,20 +144,61 @@ async function ensureEnv(root: string) {
 
 function serializeFrontmatter(data: Record<string, unknown>) {
   return Object.entries(data)
-    .filter(([, value]) => value !== undefined && value !== null)
-    .map(([key, value]) => {
-      if (Array.isArray(value)) {
-        const list = value.map((item) => `  - ${item}`).join("\n");
-        return `${key}:\n${list}`;
-      }
-      if (typeof value === "string") {
-        const sanitized = value.replace(/"/g, '\\"');
-        return `${key}: "${sanitized}"`;
-      }
-      return `${key}: ${value}`;
-    })
+    .map(([key, value]) => formatEntry(key, value, 0))
+    .filter(Boolean)
     .join("\n")
     .concat("\n");
+}
+
+function formatEntry(key: string, value: unknown, indentLevel: number): string {
+  if (value === undefined || value === null) return "";
+  const indentation = "  ".repeat(indentLevel);
+  if (Array.isArray(value)) {
+    const items = value.map((item) => formatArrayItem(item, indentLevel + 1)).filter(Boolean);
+    if (items.length === 0) return "";
+    return `${indentation}${key}:\n${items.join("\n")}`;
+  }
+  if (isPlainObject(value)) {
+    const nested = Object.entries(value)
+      .map(([childKey, childValue]) => formatEntry(childKey, childValue, indentLevel + 1))
+      .filter(Boolean);
+    if (nested.length === 0) return "";
+    return `${indentation}${key}:\n${nested.join("\n")}`;
+  }
+  return `${indentation}${key}: ${formatScalar(value)}`;
+}
+
+function formatArrayItem(value: unknown, indentLevel: number): string {
+  if (value === undefined || value === null) return "";
+  const indentation = "  ".repeat(indentLevel);
+  if (Array.isArray(value)) {
+    const nested = value.map((item) => formatArrayItem(item, indentLevel + 1)).filter(Boolean);
+    if (nested.length === 0) return "";
+    return `${indentation}-\n${nested.join("\n")}`;
+  }
+  if (isPlainObject(value)) {
+    const nested = Object.entries(value)
+      .map(([childKey, childValue]) => formatEntry(childKey, childValue, indentLevel + 1))
+      .filter(Boolean);
+    if (nested.length === 0) return `${indentation}- {}`;
+    return `${indentation}-\n${nested.join("\n")}`;
+  }
+  return `${indentation}- ${formatScalar(value)}`;
+}
+
+function formatScalar(value: unknown) {
+  if (typeof value === "string") {
+    const sanitized = value
+      .replace(/\\/g, "\\\\")
+      .replace(/"/g, '\\"')
+      .replace(/\r\n|\r|\n/g, "\\n");
+    return `"${sanitized}"`;
+  }
+  return String(value);
+}
+
+function isPlainObject(value: unknown): value is Record<string, unknown> {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
 }
 
 async function pickTmdbEntry({
@@ -182,15 +225,19 @@ async function pickTmdbEntry({
     console.warn(`No TMDB matches found for "${title}".`);
     return null;
   }
+  let chosen: TmdbNormalized;
   if (!interactive || matches.length === 1) {
     if (matches.length > 1 && !interactive) {
       console.warn(
         `Multiple TMDB matches found for "${title}". Using the first result. Re-run without --non-interactive to choose manually.`
       );
     }
-    return matches[0];
+    chosen = matches[0];
+  } else {
+    chosen = await promptForMatch(matches);
   }
-  return promptForMatch(matches);
+  const detailed = await fetchDetails(apiKey, mediaType, String(chosen.id));
+  return detailed ?? chosen;
 }
 
 async function promptForMatch(matches: TmdbNormalized[]): Promise<TmdbNormalized> {
@@ -267,7 +314,8 @@ function normalizePayload(mediaType: MediaType, payload: any): TmdbNormalized {
     releaseDate,
     url: `https://www.themoviedb.org/${mediaType}/${payload.id}`,
     posterUrl: buildImageUrl(payload.poster_path, "w500"),
-    backdropUrl: buildImageUrl(payload.backdrop_path, "w1280")
+    backdropUrl: buildImageUrl(payload.backdrop_path, "w1280"),
+    raw: payload
   };
 }
 

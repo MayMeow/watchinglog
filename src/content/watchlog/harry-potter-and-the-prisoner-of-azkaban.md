@@ -1,0 +1,80 @@
+---
+title: "Harry Potter and the Prisoner of Azkaban"
+mediaType: "movie"
+status: "logged"
+tmdbId: 673
+tmdbUrl: "https://www.themoviedb.org/movie/673"
+posterUrl: "https://image.tmdb.org/t/p/w500/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg"
+backdropUrl: "https://image.tmdb.org/t/p/w1280/vbk5CfaAHOjQPSAcYm6AoRRz2Af.jpg"
+description: "Year three at Hogwarts means new fun and challenges as Harry learns the delicate art of approaching a Hippogriff, transforming shape-shifting Boggarts into hilarity and even turning back time. But the term also brings danger: soul-sucking Dementors hover over the school, an ally of the accursed He-Who-Cannot-Be-Named lurks within the castle walls, and fearsome wizard Sirius Black escapes Azkaban. And Harry will confront them all."
+tmdbRaw:
+  adult: false
+  backdrop_path: "/vbk5CfaAHOjQPSAcYm6AoRRz2Af.jpg"
+  belongs_to_collection:
+    id: 1241
+    name: "Harry Potter Collection"
+    poster_path: "/eVPs2Y0LyvTLZn6AP5Z6O2rtiGB.jpg"
+    backdrop_path: "/kmEsQL2vOTA0jnM28fXS45Ky8kX.jpg"
+  budget: 130000000
+  genres:
+    -
+      id: 12
+      name: "Adventure"
+    -
+      id: 14
+      name: "Fantasy"
+  homepage: "https://www.warnerbros.com/movies/harry-potter-and-prisoner-azkaban"
+  id: 673
+  imdb_id: "tt0304141"
+  origin_country:
+    - "GB"
+  original_language: "en"
+  original_title: "Harry Potter and the Prisoner of Azkaban"
+  overview: "Year three at Hogwarts means new fun and challenges as Harry learns the delicate art of approaching a Hippogriff, transforming shape-shifting Boggarts into hilarity and even turning back time. But the term also brings danger: soul-sucking Dementors hover over the school, an ally of the accursed He-Who-Cannot-Be-Named lurks within the castle walls, and fearsome wizard Sirius Black escapes Azkaban. And Harry will confront them all."
+  popularity: 21.9089
+  poster_path: "/aWxwnYoe8p2d2fcxOqtvAtJ72Rw.jpg"
+  production_companies:
+    -
+      id: 174
+      logo_path: "/ingPVoHnINIrFR7WHmYux1f5pES.png"
+      name: "Warner Bros. Pictures"
+      origin_country: "US"
+    -
+      id: 436
+      logo_path: "/A7WCkG3F0NFvjGCwUnclpGdIu9E.png"
+      name: "1492 Pictures"
+      origin_country: "US"
+    -
+      id: 437
+      logo_path: "/nu20mtwbEIhUNnQ5NXVhHsNknZj.png"
+      name: "Heyday Films"
+      origin_country: "GB"
+    -
+      id: 19092
+      name: "P of A Productions"
+      origin_country: "GB"
+  production_countries:
+    -
+      iso_3166_1: "GB"
+      name: "United Kingdom"
+    -
+      iso_3166_1: "US"
+      name: "United States of America"
+  release_date: "2004-05-31"
+  revenue: 789804554
+  runtime: 141
+  spoken_languages:
+    -
+      english_name: "English"
+      iso_639_1: "en"
+      name: "English"
+  status: "Released"
+  tagline: "Something wicked this way comes."
+  title: "Harry Potter and the Prisoner of Azkaban"
+  video: false
+  vote_average: 8.01
+  vote_count: 22664
+createdAt: "2026-01-01T12:59:54.415Z"
+updatedAt: "2026-01-01T12:59:54.415Z"
+---
+Year three at Hogwarts means new fun and challenges as Harry learns the delicate art of approaching a Hippogriff, transforming shape-shifting Boggarts into hilarity and even turning back time. But the term also brings danger: soul-sucking Dementors hover over the school, an ally of the accursed He-Who-Cannot-Be-Named lurks within the castle walls, and fearsome wizard Sirius Black escapes Azkaban. And Harry will confront them all.

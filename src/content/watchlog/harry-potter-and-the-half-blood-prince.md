@@ -1,0 +1,71 @@
+---
+title: "Harry Potter and the Half-Blood Prince"
+mediaType: "movie"
+status: "logged"
+tmdbId: 767
+tmdbUrl: "https://www.themoviedb.org/movie/767"
+posterUrl: "https://image.tmdb.org/t/p/w500/z7uo9zmQdQwU5ZJHFpv2Upl30i1.jpg"
+backdropUrl: "https://image.tmdb.org/t/p/w1280/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg"
+description: "As Lord Voldemort tightens his grip on both the Muggle and wizarding worlds, Hogwarts is no longer a safe haven. Harry suspects perils may even lie within the castle, but Dumbledore is more intent upon preparing him for the final battle fast approaching. Together they work to find the key to unlock Voldemorts defenses and to this end, Dumbledore recruits his old friend and colleague Horace Slughorn, whom he believes holds crucial information. Even as the decisive showdown looms, romance blossoms for Harry, Ron, Hermione and their classmates. Love is in the air, but danger lies ahead and Hogwarts may never be the same again."
+tmdbRaw:
+  adult: false
+  backdrop_path: "/ze6Mx4QE5mQVXRYmG2flncqqle4.jpg"
+  belongs_to_collection:
+    id: 1241
+    name: "Harry Potter Collection"
+    poster_path: "/eVPs2Y0LyvTLZn6AP5Z6O2rtiGB.jpg"
+    backdrop_path: "/kmEsQL2vOTA0jnM28fXS45Ky8kX.jpg"
+  budget: 250000000
+  genres:
+    -
+      id: 12
+      name: "Adventure"
+    -
+      id: 14
+      name: "Fantasy"
+  homepage: "https://www.warnerbros.com/movies/harry-potter-and-half-blood-prince"
+  id: 767
+  imdb_id: "tt0417741"
+  origin_country:
+    - "GB"
+  original_language: "en"
+  original_title: "Harry Potter and the Half-Blood Prince"
+  overview: "As Lord Voldemort tightens his grip on both the Muggle and wizarding worlds, Hogwarts is no longer a safe haven. Harry suspects perils may even lie within the castle, but Dumbledore is more intent upon preparing him for the final battle fast approaching. Together they work to find the key to unlock Voldemorts defenses and to this end, Dumbledore recruits his old friend and colleague Horace Slughorn, whom he believes holds crucial information. Even as the decisive showdown looms, romance blossoms for Harry, Ron, Hermione and their classmates. Love is in the air, but danger lies ahead and Hogwarts may never be the same again."
+  popularity: 25.9548
+  poster_path: "/z7uo9zmQdQwU5ZJHFpv2Upl30i1.jpg"
+  production_companies:
+    -
+      id: 174
+      logo_path: "/ingPVoHnINIrFR7WHmYux1f5pES.png"
+      name: "Warner Bros. Pictures"
+      origin_country: "US"
+    -
+      id: 437
+      logo_path: "/nu20mtwbEIhUNnQ5NXVhHsNknZj.png"
+      name: "Heyday Films"
+      origin_country: "GB"
+  production_countries:
+    -
+      iso_3166_1: "GB"
+      name: "United Kingdom"
+    -
+      iso_3166_1: "US"
+      name: "United States of America"
+  release_date: "2009-07-15"
+  revenue: 933959197
+  runtime: 153
+  spoken_languages:
+    -
+      english_name: "English"
+      iso_639_1: "en"
+      name: "English"
+  status: "Released"
+  tagline: "Dark secrets revealed."
+  title: "Harry Potter and the Half-Blood Prince"
+  video: false
+  vote_average: 7.682
+  vote_count: 20352
+createdAt: "2026-01-01T12:59:44.165Z"
+updatedAt: "2026-01-01T12:59:44.165Z"
+---
+As Lord Voldemort tightens his grip on both the Muggle and wizarding worlds, Hogwarts is no longer a safe haven. Harry suspects perils may even lie within the castle, but Dumbledore is more intent upon preparing him for the final battle fast approaching. Together they work to find the key to unlock Voldemorts defenses and to this end, Dumbledore recruits his old friend and colleague Horace Slughorn, whom he believes holds crucial information. Even as the decisive showdown looms, romance blossoms for Harry, Ron, Hermione and their classmates. Love is in the air, but danger lies ahead and Hogwarts may never be the same again.

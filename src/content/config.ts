@@ -16,6 +16,7 @@ const watchlog = defineCollection({
       tmdbUrl: z.string().url().optional(),
       posterUrl: z.string().url().optional(),
       backdropUrl: z.string().url().optional(),
+      tmdbRaw: z.record(z.any()).optional(),
       createdAt: z.string().optional(),
       updatedAt: z.string().optional()
     })

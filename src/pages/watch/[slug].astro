@@ -20,10 +20,18 @@ const { data } = entry;
 const { Content } = await entry.render();
 const heroImage = data.backdropUrl ?? data.posterUrl;
 const posterImage = data.posterUrl;
+const hasTmdbDetails = typeof data.tmdbRaw === "object" && data.tmdbRaw !== null;
+const tmdbDetails = hasTmdbDetails ? (data.tmdbRaw as Record<string, unknown>) : undefined;
+const releaseDate = hasTmdbDetails
+  ? (data.mediaType === "movie"
+      ? (tmdbDetails?.["release_date"] as string | undefined)
+      : (tmdbDetails?.["first_air_date"] as string | undefined))
+  : undefined;
+const releaseLabel = releaseDate ? (data.mediaType === "movie" ? "Released" : "First aired") : undefined;
 ---
 <BaseLayout title={`${data.title} · Watching Log`} description={data.description ?? data.status ?? "Watch entry"}>
   <article class="pb-5">
-    <a href="/" class="btn btn-link text-uppercase small mb-3 px-0">← Back</a>
+    <a href="/" class="btn btn-outline-primary text-uppercase small mb-3">← Back</a>
     {heroImage && (
       <div class="watch-hero mb-4">
         <img src={heroImage} alt={`Artwork for ${data.title}`} loading="eager" decoding="async" />
@@ -55,13 +63,13 @@ const posterImage = data.posterUrl;
                 <img src={posterImage} alt={`Poster for ${data.title}`} loading="lazy" decoding="async" />
               </div>
             )}
-            <dl class="row small text-uppercase">
+            <dl class="row small">
               {data.tmdbId && (
                 <>
                   <dt class="col-4">TMDB</dt>
                   <dd class="col-8">
                     {data.tmdbUrl ? (
-                      <a href={data.tmdbUrl} target="_blank" rel="noreferrer" class="link-info">{data.tmdbId}</a>
+                      <a href={data.tmdbUrl} target="_blank" rel="noreferrer" class="link-info">See on TMDB</a>
                     ) : (
                       data.tmdbId
                     )}
@@ -78,16 +86,10 @@ const posterImage = data.posterUrl;
                   </dd>
                 </>
               )}
-              {data.createdAt && (
+              {releaseDate && (
                 <>
-                  <dt class="col-4">Created</dt>
-                  <dd class="col-8">{data.createdAt}</dd>
-                </>
-              )}
-              {data.updatedAt && (
-                <>
-                  <dt class="col-4">Updated</dt>
-                  <dd class="col-8">{data.updatedAt}</dd>
+                  <dt class="col-4">{releaseLabel}</dt>
+                  <dd class="col-8">{releaseDate}</dd>
                 </>
               )}
             </dl>

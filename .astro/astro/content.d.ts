@@ -141,9 +141,93 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"watchlog": {
+"back-to-the-future-part-ii.md": {
+	id: "back-to-the-future-part-ii.md";
+  slug: "back-to-the-future-part-ii";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"back-to-the-future-part-iii.md": {
+	id: "back-to-the-future-part-iii.md";
+  slug: "back-to-the-future-part-iii";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"back-to-the-future.md": {
+	id: "back-to-the-future.md";
+  slug: "back-to-the-future";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"futurama.md": {
+	id: "futurama.md";
+  slug: "futurama";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"harry-potter-and-the-chamber-of-secrets.md": {
+	id: "harry-potter-and-the-chamber-of-secrets.md";
+  slug: "harry-potter-and-the-chamber-of-secrets";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"harry-potter-and-the-deathly-hallows-part-1.md": {
+	id: "harry-potter-and-the-deathly-hallows-part-1.md";
+  slug: "harry-potter-and-the-deathly-hallows-part-1";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"harry-potter-and-the-deathly-hallows-part-2.md": {
+	id: "harry-potter-and-the-deathly-hallows-part-2.md";
+  slug: "harry-potter-and-the-deathly-hallows-part-2";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"harry-potter-and-the-goblet-of-fire.md": {
+	id: "harry-potter-and-the-goblet-of-fire.md";
+  slug: "harry-potter-and-the-goblet-of-fire";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"harry-potter-and-the-half-blood-prince.md": {
+	id: "harry-potter-and-the-half-blood-prince.md";
+  slug: "harry-potter-and-the-half-blood-prince";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"harry-potter-and-the-order-of-the-phoenix.md": {
+	id: "harry-potter-and-the-order-of-the-phoenix.md";
+  slug: "harry-potter-and-the-order-of-the-phoenix";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
 "harry-potter-and-the-philosopher-s-stone.md": {
 	id: "harry-potter-and-the-philosopher-s-stone.md";
   slug: "harry-potter-and-the-philosopher-s-stone";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"harry-potter-and-the-prisoner-of-azkaban.md": {
+	id: "harry-potter-and-the-prisoner-of-azkaban.md";
+  slug: "harry-potter-and-the-prisoner-of-azkaban";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"the-big-bang-theory.md": {
+	id: "the-big-bang-theory.md";
+  slug: "the-big-bang-theory";
   body: string;
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">

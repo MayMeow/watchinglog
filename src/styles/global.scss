@@ -273,7 +273,7 @@ main.container {
 .watch-grid__list {
   display: grid;
   gap: 1.75rem;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 }
 
 .watch-grid__empty {
@@ -295,8 +295,6 @@ main.container {
   background: #0d111c;
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: 0 1.5rem 2.5rem rgba(3, 5, 12, 0.55);
-  display: flex;
-  flex-direction: column;
   transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
 }
 
@@ -304,6 +302,18 @@ main.container {
   transform: translateY(-6px);
   border-color: rgba($primary, 0.45);
   box-shadow: 0 1.75rem 3rem rgba(3, 5, 12, 0.65);
+}
+
+.watch-card:focus-within {
+  border-color: rgba($primary, 0.45);
+  box-shadow: 0 1.75rem 3rem rgba(3, 5, 12, 0.65);
+}
+
+.watch-card__link {
+  display: block;
+  position: relative;
+  color: inherit;
+  height: 100%;
 }
 
 .watch-card__art {
@@ -361,60 +371,58 @@ main.container {
   letter-spacing: normal;
 }
 
-.watch-card__content {
-  padding: 1.5rem;
+.watch-card__overlay {
+  position: absolute;
+  inset: 0;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: flex-end;
+  gap: 0.4rem;
+  padding: 1.5rem;
+  background: linear-gradient(180deg, rgba(3, 5, 12, 0) 0%, rgba(3, 5, 12, 0.85) 70%);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 200ms ease, transform 200ms ease;
+  pointer-events: none;
+}
+
+.watch-card:hover .watch-card__overlay,
+.watch-card:focus-within .watch-card__overlay {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .watch-card__status {
   text-transform: uppercase;
   letter-spacing: 0.2em;
   font-size: 0.7rem;
-  color: rgba($body-color, 0.6);
+  color: rgba($body-color, 0.7);
 }
 
-.watch-card__content h2 {
-  font-size: 1.35rem;
-  margin-top: 0.5rem;
-  margin-bottom: 0.35rem;
-}
-
-.watch-card__content h2 a {
-  color: inherit;
-}
-
-.watch-card__content h2 a:hover {
-  color: $primary;
+.watch-card__overlay h2 {
+  font-size: 1.25rem;
+  margin: 0;
 }
 
 .watch-card__date {
   margin: 0;
-  color: rgba($body-color, 0.6);
-}
-
-.watch-card__excerpt {
-  margin: 0;
   color: rgba($body-color, 0.7);
-  font-size: 0.95rem;
 }
 
 .watch-card__tags {
-  margin-top: 1rem;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: 0.35rem;
 }
 
 .watch-card__tags span {
-  padding: 0.3rem 0.75rem;
+  padding: 0.2rem 0.65rem;
   border-radius: 999px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  font-size: 0.75rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  font-size: 0.7rem;
   text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: rgba($body-color, 0.75);
+  letter-spacing: 0.08em;
+  color: rgba($body-color, 0.85);
 }
 
 .prose {

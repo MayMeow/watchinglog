@@ -1,0 +1,71 @@
+---
+title: "Back to the Future Part III"
+mediaType: "movie"
+status: "logged"
+tmdbId: 196
+tmdbUrl: "https://www.themoviedb.org/movie/196"
+posterUrl: "https://image.tmdb.org/t/p/w500/crzoVQnMzIrRfHtQw0tLBirNfVg.jpg"
+backdropUrl: "https://image.tmdb.org/t/p/w1280/vKp3NvqBkcjHkCHSGi6EbcP7g4J.jpg"
+description: "The final installment finds Marty digging the trusty DeLorean out of a mineshaft and looking for Doc in the Wild West of 1885. But when their time machine breaks down, the travelers are stranded in a land of spurs. More problems arise when Doc falls for pretty schoolteacher Clara Clayton, and Marty tangles with Buford Tannen."
+tmdbRaw:
+  adult: false
+  backdrop_path: "/vKp3NvqBkcjHkCHSGi6EbcP7g4J.jpg"
+  belongs_to_collection:
+    id: 264
+    name: "Back to the Future Collection"
+    poster_path: "/5Xsu2o5IsZRuuxCEVZ9nVve21FP.jpg"
+    backdrop_path: "/c9C9Pg2QctyjZHRmS0P8rZg1OTA.jpg"
+  budget: 40000000
+  genres:
+    -
+      id: 12
+      name: "Adventure"
+    -
+      id: 35
+      name: "Comedy"
+    -
+      id: 878
+      name: "Science Fiction"
+  homepage: "http://www.backtothefuture.com/movies/backtothefuture3"
+  id: 196
+  imdb_id: "tt0099088"
+  origin_country:
+    - "US"
+  original_language: "en"
+  original_title: "Back to the Future Part III"
+  overview: "The final installment finds Marty digging the trusty DeLorean out of a mineshaft and looking for Doc in the Wild West of 1885. But when their time machine breaks down, the travelers are stranded in a land of spurs. More problems arise when Doc falls for pretty schoolteacher Clara Clayton, and Marty tangles with Buford Tannen."
+  popularity: 16.1902
+  poster_path: "/crzoVQnMzIrRfHtQw0tLBirNfVg.jpg"
+  production_companies:
+    -
+      id: 33
+      logo_path: "/8lvHyhjr8oUKOOy2dKXoALWKdp0.png"
+      name: "Universal Pictures"
+      origin_country: "US"
+    -
+      id: 56
+      logo_path: "/cEaxANEisCqeEoRvODv2dO1I0iI.png"
+      name: "Amblin Entertainment"
+      origin_country: "US"
+  production_countries:
+    -
+      iso_3166_1: "US"
+      name: "United States of America"
+  release_date: "1990-05-25"
+  revenue: 244527583
+  runtime: 119
+  spoken_languages:
+    -
+      english_name: "English"
+      iso_639_1: "en"
+      name: "English"
+  status: "Released"
+  tagline: "They've saved the best trip for last... But this time they may have gone too far."
+  title: "Back to the Future Part III"
+  video: false
+  vote_average: 7.49
+  vote_count: 11200
+createdAt: "2026-01-01T12:44:42.007Z"
+updatedAt: "2026-01-01T12:44:42.007Z"
+---
+The final installment finds Marty digging the trusty DeLorean out of a mineshaft and looking for Doc in the Wild West of 1885. But when their time machine breaks down, the travelers are stranded in a land of spurs. More problems arise when Doc falls for pretty schoolteacher Clara Clayton, and Marty tangles with Buford Tannen.
