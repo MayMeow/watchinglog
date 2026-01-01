@@ -8,7 +8,9 @@ FROM node:20-alpine AS build
 WORKDIR /app
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-RUN npm run build
+RUN npx astro preferences disable devToolbar \
+    && npm run build    
+
 
 FROM caddy:2-alpine AS runner
 COPY --from=build /app/dist /usr/share/caddy
