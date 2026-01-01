@@ -141,9 +141,23 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"watchlog": {
+"a-minecraft-movie.md": {
+	id: "a-minecraft-movie.md";
+  slug: "a-minecraft-movie";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
 "american-dad.md": {
 	id: "american-dad.md";
   slug: "american-dad";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"ant-man-and-the-wasp-quantumania.md": {
+	id: "ant-man-and-the-wasp-quantumania.md";
+  slug: "ant-man-and-the-wasp-quantumania";
   body: string;
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">
@@ -169,6 +183,20 @@ declare module 'astro:content' {
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">
 } & { render(): Render[".md"] };
+"damsel.md": {
+	id: "damsel.md";
+  slug: "damsel";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"encanto.md": {
+	id: "encanto.md";
+  slug: "encanto";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
 "family-guy.md": {
 	id: "family-guy.md";
   slug: "family-guy";
@@ -186,6 +214,27 @@ declare module 'astro:content' {
 "futurama.md": {
 	id: "futurama.md";
   slug: "futurama";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"guardians-of-the-galaxy-vol-2.md": {
+	id: "guardians-of-the-galaxy-vol-2.md";
+  slug: "guardians-of-the-galaxy-vol-2";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"guardians-of-the-galaxy-vol-3.md": {
+	id: "guardians-of-the-galaxy-vol-3.md";
+  slug: "guardians-of-the-galaxy-vol-3";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"guardians-of-the-galaxy.md": {
+	id: "guardians-of-the-galaxy.md";
+  slug: "guardians-of-the-galaxy";
   body: string;
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">
@@ -246,9 +295,65 @@ declare module 'astro:content' {
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">
 } & { render(): Render[".md"] };
+"kpop-demon-hunters.md": {
+	id: "kpop-demon-hunters.md";
+  slug: "kpop-demon-hunters";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"luck.md": {
+	id: "luck.md";
+  slug: "luck";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
 "my-teen-romantic-comedy-snafu.md": {
 	id: "my-teen-romantic-comedy-snafu.md";
   slug: "my-teen-romantic-comedy-snafu";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"once-upon-a-crime.md": {
+	id: "once-upon-a-crime.md";
+  slug: "once-upon-a-crime";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"phineas-and-ferb-mission-marvel.md": {
+	id: "phineas-and-ferb-mission-marvel.md";
+  slug: "phineas-and-ferb-mission-marvel";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"phineas-and-ferb-star-wars.md": {
+	id: "phineas-and-ferb-star-wars.md";
+  slug: "phineas-and-ferb-star-wars";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"phineas-and-ferb-the-movie-across-the-2nd-dimension.md": {
+	id: "phineas-and-ferb-the-movie-across-the-2nd-dimension.md";
+  slug: "phineas-and-ferb-the-movie-across-the-2nd-dimension";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"phineas-and-ferb-the-movie-candace-against-the-universe.md": {
+	id: "phineas-and-ferb-the-movie-candace-against-the-universe.md";
+  slug: "phineas-and-ferb-the-movie-candace-against-the-universe";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"tenet.md": {
+	id: "tenet.md";
+  slug: "tenet";
   body: string;
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">
@@ -270,6 +375,13 @@ declare module 'astro:content' {
 "the-simpsons.md": {
 	id: "the-simpsons.md";
   slug: "the-simpsons";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"wish.md": {
+	id: "wish.md";
+  slug: "wish";
   body: string;
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">

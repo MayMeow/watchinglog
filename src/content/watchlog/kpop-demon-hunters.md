@@ -1,0 +1,68 @@
+---
+title: "KPop Demon Hunters"
+mediaType: "movie"
+status: "logged"
+tmdbId: 803796
+tmdbUrl: "https://www.themoviedb.org/movie/803796"
+posterUrl: "https://image.tmdb.org/t/p/w500/zT7Lhw3BhJbMkRqm9Zlx2YGMsY0.jpg"
+backdropUrl: "https://image.tmdb.org/t/p/w1280/w3Bi0wygeFQctn6AqFTwhGNXRwL.jpg"
+description: "When K-pop superstars Rumi, Mira and Zoey aren't selling out stadiums, they're using their secret powers to protect their fans from supernatural threats."
+tmdbRaw:
+  adult: false
+  backdrop_path: "/w3Bi0wygeFQctn6AqFTwhGNXRwL.jpg"
+  budget: 100000000
+  genres:
+    -
+      id: 14
+      name: "Fantasy"
+    -
+      id: 10402
+      name: "Music"
+    -
+      id: 35
+      name: "Comedy"
+    -
+      id: 16
+      name: "Animation"
+  homepage: "https://www.netflix.com/title/81498621"
+  id: 803796
+  imdb_id: "tt14205554"
+  origin_country:
+    - "US"
+  original_language: "en"
+  original_title: "KPop Demon Hunters"
+  overview: "When K-pop superstars Rumi, Mira and Zoey aren't selling out stadiums, they're using their secret powers to protect their fans from supernatural threats."
+  popularity: 67.0719
+  poster_path: "/zT7Lhw3BhJbMkRqm9Zlx2YGMsY0.jpg"
+  production_companies:
+    -
+      id: 2251
+      logo_path: "/5ilV5mH3gxTEU7p5wjxptHvXkyr.png"
+      name: "Sony Pictures Animation"
+      origin_country: "US"
+  production_countries:
+    -
+      iso_3166_1: "US"
+      name: "United States of America"
+  release_date: "2025-06-20"
+  revenue: 24619953
+  runtime: 96
+  spoken_languages:
+    -
+      english_name: "English"
+      iso_639_1: "en"
+      name: "English"
+    -
+      english_name: "Korean"
+      iso_639_1: "ko"
+      name: "한국어/조선말"
+  status: "Released"
+  tagline: "They sing. They dance. They battle demons."
+  title: "KPop Demon Hunters"
+  video: false
+  vote_average: 8.2
+  vote_count: 2118
+createdAt: "2026-01-01T13:55:17.703Z"
+updatedAt: "2026-01-01T13:55:17.703Z"
+---
+When K-pop superstars Rumi, Mira and Zoey aren't selling out stadiums, they're using their secret powers to protect their fans from supernatural threats.
