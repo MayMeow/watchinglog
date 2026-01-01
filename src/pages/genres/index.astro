@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { buildGenreStats } from "../../utils/genres";
+
+const watchEntries = await getCollection("watchlog");
+const genreStats = buildGenreStats(watchEntries);
+const hasGenres = genreStats.length > 0;
+---
+<BaseLayout title="Genres · Watching Log" description="Browse everything I've watched by TMDB genre.">
+  <header class="page-header">
+    <div>
+      <h1 class="page-title">Genres</h1>
+      <p class="page-subtitle">
+        Browse every TMDB genre represented in the log. Use the selector to jump directly to a filtered view.
+      </p>
+    </div>
+    {hasGenres && (
+      <div class="page-controls">
+        <label for="genre-select" class="page-controls__label">Jump to a genre</label>
+        <select
+          id="genre-select"
+          class="form-select"
+          onchange="if (this.value) { window.location.href = this.value; }"
+        >
+          <option value="">Select a genre</option>
+          {genreStats.map((genre) => (
+            <option value={`/genres/${genre.slug}/`}>
+              {genre.name} ({genre.count})
+            </option>
+          ))}
+        </select>
+      </div>
+    )}
+  </header>
+
+  {hasGenres ? (
+    <div class="genre-grid">
+      {genreStats.map((genre) => (
+        <a class="genre-card" href={`/genres/${genre.slug}/`}>
+          <span class="genre-card__name">{genre.name}</span>
+          <span class="genre-card__count">
+            {genre.count} {genre.count === 1 ? "entry" : "entries"}
+          </span>
+        </a>
+      ))}
+    </div>
+  ) : (
+    <div class="alert alert-secondary mt-4" role="status">
+      No genre data yet. Add a few watch entries via the CLI to unlock this breakdown.
+    </div>
+  )}
+</BaseLayout>

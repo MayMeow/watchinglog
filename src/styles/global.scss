@@ -84,6 +84,27 @@ a:hover {
   color: rgba($body-color, 0.7);
 }
 
+.site-nav {
+  display: flex;
+  gap: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.75rem;
+}
+
+.site-nav__link {
+  color: rgba($body-color, 0.7);
+  padding: 0.35rem 0;
+  border-bottom: 2px solid transparent;
+  transition: color 160ms ease, border-color 160ms ease;
+}
+
+.site-nav__link:hover,
+.site-nav__link:focus {
+  color: $primary;
+  border-color: rgba($primary, 0.8);
+}
+
 .site-header__note {
   text-transform: uppercase;
   letter-spacing: 0.15em;
@@ -452,6 +473,92 @@ main.container {
   width: 100%;
   border-radius: 1rem;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
+}
+
+.page-header {
+  margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.page-header__back {
+  align-self: flex-start;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: rgba($body-color, 0.65);
+}
+
+.page-title {
+  margin: 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 600;
+}
+
+.page-subtitle {
+  margin: 0;
+  color: rgba($body-color, 0.7);
+}
+
+.page-subtitle--eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.7rem;
+  color: rgba($body-color, 0.55);
+}
+
+.page-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-width: 260px;
+}
+
+.page-controls__label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  color: rgba($body-color, 0.6);
+}
+
+.genre-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.genre-card {
+  padding: 1.25rem 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background: rgba(13, 16, 27, 0.85);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  transition: transform 180ms ease, border-color 180ms ease;
+}
+
+.genre-card:hover,
+.genre-card:focus {
+  transform: translateY(-4px);
+  border-color: rgba($primary, 0.7);
+}
+
+.genre-card__name {
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.genre-card__count {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: rgba($body-color, 0.7);
+}
+
+.watch-grid__list--genre {
+  margin-bottom: 3rem;
 }
 
 @media (max-width: 600px) {

@@ -141,6 +141,13 @@ declare module 'astro:content' {
 
 	type ContentEntryMap = {
 		"watchlog": {
+"american-dad.md": {
+	id: "american-dad.md";
+  slug: "american-dad";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
 "back-to-the-future-part-ii.md": {
 	id: "back-to-the-future-part-ii.md";
   slug: "back-to-the-future-part-ii";
@@ -158,6 +165,20 @@ declare module 'astro:content' {
 "back-to-the-future.md": {
 	id: "back-to-the-future.md";
   slug: "back-to-the-future";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"family-guy.md": {
+	id: "family-guy.md";
+  slug: "family-guy";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"frieren-beyond-journey-s-end.md": {
+	id: "frieren-beyond-journey-s-end.md";
+  slug: "frieren-beyond-journey-s-end";
   body: string;
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">
@@ -225,9 +246,23 @@ declare module 'astro:content' {
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">
 } & { render(): Render[".md"] };
+"my-teen-romantic-comedy-snafu.md": {
+	id: "my-teen-romantic-comedy-snafu.md";
+  slug: "my-teen-romantic-comedy-snafu";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
 "the-big-bang-theory.md": {
 	id: "the-big-bang-theory.md";
   slug: "the-big-bang-theory";
+  body: string;
+  collection: "watchlog";
+  data: InferEntrySchema<"watchlog">
+} & { render(): Render[".md"] };
+"the-fragrant-flower-blooms-with-dignity.md": {
+	id: "the-fragrant-flower-blooms-with-dignity.md";
+  slug: "the-fragrant-flower-blooms-with-dignity";
   body: string;
   collection: "watchlog";
   data: InferEntrySchema<"watchlog">

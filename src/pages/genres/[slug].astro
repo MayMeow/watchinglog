@@ -1,0 +1,78 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import WatchCard from "../../components/WatchCard.astro";
+import { getCollection } from "astro:content";
+import { buildGenreStats } from "../../utils/genres";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("watchlog");
+  const genreStats = buildGenreStats(entries);
+
+  return genreStats.map((genre) => ({
+    params: { slug: genre.slug },
+    props: {
+      genreName: genre.name,
+      entrySlugs: genre.entrySlugs
+    }
+  }));
+}
+
+interface Props {
+  genreName: string;
+  entrySlugs: string[];
+}
+
+const { genreName, entrySlugs } = Astro.props as Props;
+const { slug } = Astro.params;
+const entrySlugSet = new Set(entrySlugs);
+const watchEntries = await getCollection("watchlog");
+const filteredEntries = watchEntries
+  .filter((entry) => entrySlugSet.has(entry.slug))
+  .sort((a, b) => {
+    const dateA = Date.parse(a.data.watchDate ?? a.data.createdAt ?? "1970-01-01");
+    const dateB = Date.parse(b.data.watchDate ?? b.data.createdAt ?? "1970-01-01");
+    return dateB - dateA;
+  });
+const genreCount = filteredEntries.length;
+const allGenres = buildGenreStats(watchEntries);
+---
+<BaseLayout title={`${genreName} · Genre · Watching Log`} description={`Entries filtered by the ${genreName} genre.`}>
+  <header class="page-header">
+    <a href="/genres" class="page-header__back">← Back to all genres</a>
+    <div>
+      <p class="page-subtitle page-subtitle--eyebrow">TMDB genre</p>
+      <h1 class="page-title">{genreName}</h1>
+      <p class="page-subtitle">
+        {genreCount > 0 ? `${genreCount} ${genreCount === 1 ? "entry" : "entries"} logged so far.` : "No entries yet."}
+      </p>
+    </div>
+    {allGenres.length > 0 && (
+      <div class="page-controls">
+        <label for="genre-switcher" class="page-controls__label">Switch genre</label>
+        <select
+          id="genre-switcher"
+          class="form-select"
+          onchange="if (this.value) { window.location.href = this.value; }"
+        >
+          {allGenres.map((genre) => (
+            <option value={`/genres/${genre.slug}/`} selected={genre.slug === slug}>
+              {genre.name} ({genre.count})
+            </option>
+          ))}
+        </select>
+      </div>
+    )}
+  </header>
+
+  {genreCount > 0 ? (
+    <div class="watch-grid__list watch-grid__list--genre">
+      {filteredEntries.map((entry) => (
+        <WatchCard entry={entry} />
+      ))}
+    </div>
+  ) : (
+    <div class="alert alert-secondary mt-4" role="status">
+      Nothing logged in this genre yet. Try another genre from the dropdown above.
+    </div>
+  )}
+</BaseLayout>

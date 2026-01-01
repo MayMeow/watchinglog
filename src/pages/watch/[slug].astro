@@ -40,7 +40,12 @@ const releaseLabel = releaseDate ? (data.mediaType === "movie" ? "Released" : "F
     <header class="mb-4">
       <span class={`badge text-bg-${data.mediaType === "movie" ? "danger" : "info"} badge-pill text-uppercase`}>{data.mediaType}</span>
       <h1 class="display-5 fw-semibold mt-3">{data.title}</h1>
-      {data.status && <p class="fs-5 text-muted">Status: {data.status}</p>}
+      <p>
+        Original name: <span class="badge text-bg-info">{tmdbDetails.original_name}</span>
+      </p>
+      {data.status && <p class="fs-5 text-muted">Status: 
+        <span class="badge text-bg-primary">{data.status}</span>
+      </p>}
       <div class="d-flex gap-3 flex-wrap text-uppercase small text-muted">
         {data.watchDate && <span>Watched: {data.watchDate}</span>}
         {data.rating && <span>Rated: {data.rating}</span>}
