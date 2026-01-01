@@ -6,7 +6,7 @@ Static Astro site that records every movie and series I log. Entries live as Mar
 - [Astro 4](https://astro.build/) with Markdown content collections
 - Bootstrap 5 + custom SCSS tokens
 - CLI entry generator powered by TMDB and `tsx`
-- Docker (node:20-alpine) build ready for Coolify deployment
+- Docker (node:20-alpine build stage, Caddy runtime) ready for Coolify deployment
 
 ## Getting Started
 ```bash
@@ -41,9 +41,9 @@ Located in `src/content/config.ts`. Required fields: `title`, `mediaType`, `stat
 ```bash
 npm run build
 docker build -t watchinglog:latest .
-docker run -p 4173:4173 watchinglog:latest
+docker run -p 8080:80 watchinglog:latest
 ```
-The container serves the static `dist/` output with `serve` listening on port 4173, matching Astro preview defaults. Configure Coolify to pull the repo, run `npm install && npm run build`, and expose port 4173.
+The container now copies the static `dist/` output into a tiny `caddy:2-alpine` image and serves it via `caddy file-server` on port 80. When deploying to Coolify (or similar), expose port 80 and map it to whatever host port you prefer.
 
 ## Project Scripts
 - `npm run dev` – Astro dev server
