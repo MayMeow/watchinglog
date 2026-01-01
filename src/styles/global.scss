@@ -6,8 +6,8 @@ $success: #58c9b9;
 $info: #5bc0eb;
 $warning: #f9c846;
 $danger: #d7263d;
-$body-bg: #050505;
-$body-color: #f5f5f5;
+$body-bg: #070a12;
+$body-color: #f7f5f0;
 $font-family-sans-serif: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
 $border-radius: 0.85rem;
 $card-bg: color.scale($body-bg, $lightness: 8%);
@@ -38,9 +38,9 @@ $card-bg: color.scale($body-bg, $lightness: 8%);
 body {
   min-height: 100vh;
   background:
-    radial-gradient(circle at top, rgba($info, 0.12), transparent 45%),
-    radial-gradient(circle at 20% 40%, rgba($primary, 0.16), transparent 35%),
-    #040308;
+    radial-gradient(circle at 20% 20%, rgba($info, 0.18), transparent 45%),
+    radial-gradient(circle at 80% 0%, rgba($primary, 0.15), transparent 40%),
+    linear-gradient(180deg, #05070d, #0b101b 55%, #06070c);
   color: $body-color;
 }
 
@@ -61,7 +61,8 @@ a:hover {
 }
 
 main.container {
-  max-width: 1200px;
+  max-width: 1180px;
+  padding-bottom: 4rem;
 }
 
 .badge-pill {
@@ -72,8 +73,12 @@ main.container {
 .hero {
   display: grid;
   gap: 2rem;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  padding: 2rem 0 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  padding: 2rem 2rem 3rem;
+  border-radius: 1.75rem;
+  background: radial-gradient(circle at top right, rgba(255, 138, 92, 0.2), transparent 55%), #0c111f;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 2rem 3rem rgba(3, 4, 10, 0.6);
 }
 
 .hero__copy h1 {
@@ -92,6 +97,26 @@ main.container {
 .hero__lede {
   max-width: 36ch;
   color: rgba($body-color, 0.75);
+}
+
+.hero__cta {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  margin-top: 1.5rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(8, 9, 15, 0.7);
+  font-family: "JetBrains Mono", "SF Mono", ui-monospace, monospace;
+  font-size: 0.85rem;
+  color: rgba($body-color, 0.9);
+}
+
+.hero__cta code {
+  background: none;
+  padding: 0;
+  color: $primary;
 }
 
 .stats-grid {
@@ -130,6 +155,14 @@ main.container {
   box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.35);
 }
 
+.hero__spotlight--empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px dashed rgba(255, 255, 255, 0.2);
+  color: rgba($body-color, 0.65);
+}
+
 .hero__spotlight img,
 .hero__spotlight-placeholder {
   width: 100%;
@@ -151,11 +184,21 @@ main.container {
 .hero__spotlight-pane {
   position: absolute;
   inset: auto 1.25rem 1.25rem;
-  padding: 1.25rem;
+  padding: 1.25rem 1.5rem;
   border-radius: 1.25rem;
-  background: rgba(5, 5, 10, 0.8);
-  backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(4, 5, 12, 0.85);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.hero__spotlight-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.7rem;
+  color: rgba($body-color, 0.62);
 }
 
 .watch-grid {
@@ -168,21 +211,34 @@ main.container {
   grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
 }
 
+.watch-grid__empty {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 3rem;
+  border-radius: 1.25rem;
+  border: 1px dashed rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.02);
+  text-align: center;
+}
+
+
 .watch-card {
   position: relative;
   border-radius: 1.25rem;
   overflow: hidden;
-  background: rgba(255, 255, 255, 0.02);
+  background: #0d111c;
   border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 1.75rem 2.5rem rgba(0, 0, 0, 0.45);
+  box-shadow: 0 1.5rem 2.5rem rgba(3, 5, 12, 0.55);
   display: flex;
   flex-direction: column;
-  transition: transform 200ms ease, border-color 200ms ease;
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
 }
 
 .watch-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba($primary, 0.4);
+  transform: translateY(-6px);
+  border-color: rgba($primary, 0.45);
+  box-shadow: 0 1.75rem 3rem rgba(3, 5, 12, 0.65);
 }
 
 .watch-card__art {
@@ -242,6 +298,9 @@ main.container {
 
 .watch-card__content {
   padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .watch-card__status {
@@ -268,6 +327,12 @@ main.container {
 .watch-card__date {
   margin: 0;
   color: rgba($body-color, 0.6);
+}
+
+.watch-card__excerpt {
+  margin: 0;
+  color: rgba($body-color, 0.7);
+  font-size: 0.95rem;
 }
 
 .watch-card__tags {

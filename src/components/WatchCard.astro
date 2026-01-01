@@ -9,6 +9,12 @@ const { entry } = Astro.props;
 const { slug, data } = entry;
 const tags = data.tags ?? [];
 const posterUrl = data.posterUrl;
+  const descriptionSource = data.description ?? entry.body ?? "";
+  const excerpt = descriptionSource
+    .replace(/\s+/g, " ")
+    .trim()
+    .slice(0, 140);
+  const readableExcerpt = excerpt ? `${excerpt}${descriptionSource.length > 140 ? "…" : ""}` : null;
 ---
 <article class="watch-card">
   <div class="watch-card__art">
@@ -26,6 +32,7 @@ const posterUrl = data.posterUrl;
       <a href={`/watch/${slug}/`}>{data.title}</a>
     </h2>
     {data.watchDate && <p class="watch-card__date">Watched {data.watchDate}</p>}
+    {readableExcerpt && <p class="watch-card__excerpt">{readableExcerpt}</p>}
     {tags.length > 0 && (
       <div class="watch-card__tags">
         {tags.map((tag) => (

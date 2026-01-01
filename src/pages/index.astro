@@ -19,16 +19,26 @@ const totals = watchEntries.reduce(
   { total: 0, movies: 0, tv: 0 }
 );
 
+const hasEntries = watchEntries.length > 0;
 const latestEntry = watchEntries[0];
 const latestArt = latestEntry?.data.backdropUrl ?? latestEntry?.data.posterUrl ?? null;
 ---
 <BaseLayout title="Watching Log" description="A rolling feed of everything I'm watching.">
   <section class="hero">
     <div class="hero__copy">
-      <p class="hero__eyebrow">Personal watchlog · Updated via CLI</p>
-      <h1>TV + Film tracking that actually feels tactile.</h1>
+      <p class="hero__eyebrow">Personal watchlog · fed by TMDB</p>
+      <h1>
+        {hasEntries ? (
+          <>
+            Tracking {totals.total} stories across movies & television.
+          </>
+        ) : (
+          <>Start the log and never forget what you watched.</>
+        )}
+      </h1>
       <p class="hero__lede">
-        Every entry comes from TMDB metadata and Markdown notes so I always remember when, why, and how each story hit.
+        Entries are generated via CLI, enriched with TMDB art, then published with Astro. This space keeps context, mood, and
+        rewatch notes in one place.
       </p>
       <div class="stats-grid">
         <div class="stat-card">
@@ -44,8 +54,14 @@ const latestArt = latestEntry?.data.backdropUrl ?? latestEntry?.data.posterUrl ?
           <span class="stat-card__value">{totals.tv}</span>
         </div>
       </div>
+      {!hasEntries && (
+        <div class="hero__cta">
+          <code>npm run add -- --title "Dune"</code>
+          <span>Add your first entry via CLI.</span>
+        </div>
+      )}
     </div>
-    {latestEntry && (
+    {latestEntry ? (
       <div class="hero__spotlight">
         {latestArt ? (
           <img src={latestArt} alt={`Artwork for ${latestEntry.data.title}`} loading="eager" decoding="async" />
@@ -53,20 +69,34 @@ const latestArt = latestEntry?.data.backdropUrl ?? latestEntry?.data.posterUrl ?
           <div class="hero__spotlight-placeholder">No artwork</div>
         )}
         <div class="hero__spotlight-pane">
-          <p class="text-uppercase small text-muted mb-1">Latest entry</p>
-          <h2 class="h3 mb-1">{latestEntry.data.title}</h2>
-          <p class="mb-3 text-body-secondary">{latestEntry.data.status ?? "Logged"} · {latestEntry.data.mediaType}</p>
+          <p class="hero__spotlight-eyebrow">Latest entry</p>
+          <h2>{latestEntry.data.title}</h2>
+          <p>
+            {latestEntry.data.status ?? "Logged"} · {latestEntry.data.mediaType}
+            {latestEntry.data.watchDate && <> · {latestEntry.data.watchDate}</>}
+          </p>
           <a class="btn btn-light btn-sm text-dark" href={`/watch/${latestEntry.slug}/`}>Read entry</a>
         </div>
+      </div>
+    ) : (
+      <div class="hero__spotlight hero__spotlight--empty">
+        <p>No entries yet. Run the CLI to create one.</p>
       </div>
     )}
   </section>
 
   <section class="watch-grid">
-    <div class="watch-grid__list">
-      {watchEntries.map((entry) => (
-        <WatchCard entry={entry} />
-      ))}
-    </div>
+    {hasEntries ? (
+      <div class="watch-grid__list">
+        {watchEntries.map((entry) => (
+          <WatchCard entry={entry} />
+        ))}
+      </div>
+    ) : (
+      <div class="watch-grid__empty">
+        <p>You have not logged anything yet.</p>
+        <p class="text-muted">Use the CLI to pull TMDB data and this grid will populate automatically.</p>
+      </div>
+    )}
   </section>
 </BaseLayout>
