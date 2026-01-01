@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+
+export async function getStaticPaths() {
+  const entries = await getCollection("watchlog");
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry }
+  }));
+}
+
+interface Props {
+  entry: CollectionEntry<"watchlog">;
+}
+
+const { entry } = Astro.props as Props;
+const { data } = entry;
+const { Content } = await entry.render();
+const heroImage = data.backdropUrl ?? data.posterUrl;
+const posterImage = data.posterUrl;
+---
+<BaseLayout title={`${data.title} · Watching Log`} description={data.description ?? data.status ?? "Watch entry"}>
+  <article class="pb-5">
+    <a href="/" class="btn btn-link text-uppercase small mb-3 px-0">← Back</a>
+    {heroImage && (
+      <div class="watch-hero mb-4">
+        <img src={heroImage} alt={`Artwork for ${data.title}`} loading="eager" decoding="async" />
+      </div>
+    )}
+    <header class="mb-4">
+      <span class={`badge text-bg-${data.mediaType === "movie" ? "danger" : "info"} badge-pill text-uppercase`}>{data.mediaType}</span>
+      <h1 class="display-5 fw-semibold mt-3">{data.title}</h1>
+      {data.status && <p class="fs-5 text-muted">Status: {data.status}</p>}
+      <div class="d-flex gap-3 flex-wrap text-uppercase small text-muted">
+        {data.watchDate && <span>Watched: {data.watchDate}</span>}
+        {data.rating && <span>Rated: {data.rating}</span>}
+        {data.progress && <span>Progress: {data.progress}</span>}
+      </div>
+    </header>
+
+    <div class="row gy-4">
+      <div class="col-lg-8">
+        <div class="prose text-body-secondary">
+          <Content />
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="card bg-dark border-secondary-subtle">
+          <div class="card-body">
+            <h2 class="h5 fw-semibold">Details</h2>
+            {posterImage && (
+              <div class="watch-detail-poster mb-3">
+                <img src={posterImage} alt={`Poster for ${data.title}`} loading="lazy" decoding="async" />
+              </div>
+            )}
+            <dl class="row small text-uppercase">
+              {data.tmdbId && (
+                <>
+                  <dt class="col-4">TMDB</dt>
+                  <dd class="col-8">
+                    {data.tmdbUrl ? (
+                      <a href={data.tmdbUrl} target="_blank" rel="noreferrer" class="link-info">{data.tmdbId}</a>
+                    ) : (
+                      data.tmdbId
+                    )}
+                  </dd>
+                </>
+              )}
+              {data.tags && data.tags.length > 0 && (
+                <>
+                  <dt class="col-4">Tags</dt>
+                  <dd class="col-8 d-flex flex-wrap gap-2">
+                    {data.tags.map((tag) => (
+                      <span class="badge text-bg-secondary-subtle">{tag}</span>
+                    ))}
+                  </dd>
+                </>
+              )}
+              {data.createdAt && (
+                <>
+                  <dt class="col-4">Created</dt>
+                  <dd class="col-8">{data.createdAt}</dd>
+                </>
+              )}
+              {data.updatedAt && (
+                <>
+                  <dt class="col-4">Updated</dt>
+                  <dd class="col-8">{data.updatedAt}</dd>
+                </>
+              )}
+            </dl>
+          </div>
+        </div>
+      </div>
+    </div>
+  </article>
+</BaseLayout>

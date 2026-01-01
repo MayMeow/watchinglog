@@ -1,0 +1,37 @@
+---
+import type { CollectionEntry } from "astro:content";
+
+interface Props {
+  entry: CollectionEntry<"watchlog">;
+}
+
+const { entry } = Astro.props;
+const { slug, data } = entry;
+const tags = data.tags ?? [];
+const posterUrl = data.posterUrl;
+---
+<article class="watch-card">
+  <div class="watch-card__art">
+    {posterUrl ? (
+      <img src={posterUrl} alt={`Poster for ${data.title}`} loading="lazy" decoding="async" />
+    ) : (
+      <div class="watch-card__placeholder">Artwork incoming</div>
+    )}
+    <span class={`watch-card__chip watch-card__chip--${data.mediaType}`}>{data.mediaType}</span>
+    {data.rating && <span class="watch-card__chip watch-card__chip--rating">★ {data.rating}</span>}
+  </div>
+  <div class="watch-card__content">
+    {data.status && <p class="watch-card__status">{data.status}</p>}
+    <h2>
+      <a href={`/watch/${slug}/`}>{data.title}</a>
+    </h2>
+    {data.watchDate && <p class="watch-card__date">Watched {data.watchDate}</p>}
+    {tags.length > 0 && (
+      <div class="watch-card__tags">
+        {tags.map((tag) => (
+          <span>{tag}</span>
+        ))}
+      </div>
+    )}
+  </div>
+</article>

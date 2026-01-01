@@ -1,0 +1,72 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import WatchCard from "../components/WatchCard.astro";
+import { getCollection } from "astro:content";
+
+const watchEntries = (await getCollection("watchlog")).sort((a, b) => {
+  const dateA = Date.parse(a.data.watchDate ?? a.data.createdAt ?? "1970-01-01");
+  const dateB = Date.parse(b.data.watchDate ?? b.data.createdAt ?? "1970-01-01");
+  return dateB - dateA;
+});
+
+const totals = watchEntries.reduce(
+  (acc, entry) => {
+    acc.total += 1;
+    if (entry.data.mediaType === "movie") acc.movies += 1;
+    if (entry.data.mediaType === "tv") acc.tv += 1;
+    return acc;
+  },
+  { total: 0, movies: 0, tv: 0 }
+);
+
+const latestEntry = watchEntries[0];
+const latestArt = latestEntry?.data.backdropUrl ?? latestEntry?.data.posterUrl ?? null;
+---
+<BaseLayout title="Watching Log" description="A rolling feed of everything I'm watching.">
+  <section class="hero">
+    <div class="hero__copy">
+      <p class="hero__eyebrow">Personal watchlog · Updated via CLI</p>
+      <h1>TV + Film tracking that actually feels tactile.</h1>
+      <p class="hero__lede">
+        Every entry comes from TMDB metadata and Markdown notes so I always remember when, why, and how each story hit.
+      </p>
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-card__label">Entries logged</span>
+          <span class="stat-card__value">{totals.total}</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__label">Movies</span>
+          <span class="stat-card__value">{totals.movies}</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-card__label">Series</span>
+          <span class="stat-card__value">{totals.tv}</span>
+        </div>
+      </div>
+    </div>
+    {latestEntry && (
+      <div class="hero__spotlight">
+        {latestArt ? (
+          <img src={latestArt} alt={`Artwork for ${latestEntry.data.title}`} loading="eager" decoding="async" />
+        ) : (
+          <div class="hero__spotlight-placeholder">No artwork</div>
+        )}
+        <div class="hero__spotlight-pane">
+          <p class="text-uppercase small text-muted mb-1">Latest entry</p>
+          <h2 class="h3 mb-1">{latestEntry.data.title}</h2>
+          <p class="mb-3 text-body-secondary">{latestEntry.data.status ?? "Logged"} · {latestEntry.data.mediaType}</p>
+          <a class="btn btn-light btn-sm text-dark" href={`/watch/${latestEntry.slug}/`}>Read entry</a>
+        </div>
+      </div>
+    )}
+  </section>
+
+  <section class="watch-grid">
+    <div class="watch-grid__list">
+      {watchEntries.map((entry) => (
+        <WatchCard entry={entry} />
+      ))}
+    </div>
+  </section>
+</BaseLayout>

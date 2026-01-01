@@ -1,0 +1,323 @@
+@use "sass:color";
+
+$primary: #ff8a5c;
+$secondary: #2e294e;
+$success: #58c9b9;
+$info: #5bc0eb;
+$warning: #f9c846;
+$danger: #d7263d;
+$body-bg: #050505;
+$body-color: #f5f5f5;
+$font-family-sans-serif: "Space Grotesk", "Segoe UI", system-ui, -apple-system, sans-serif;
+$border-radius: 0.85rem;
+$card-bg: color.scale($body-bg, $lightness: 8%);
+
+@use "bootstrap/scss/bootstrap" with (
+  $theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "success": $success,
+    "info": $info,
+    "warning": $warning,
+    "danger": $danger,
+    "body": $body-color
+  ),
+  $body-bg: $body-bg,
+  $body-color: $body-color,
+  $font-family-sans-serif: $font-family-sans-serif,
+  $border-radius: $border-radius,
+  $card-bg: $card-bg
+);
+
+:root {
+  font-family: $font-family-sans-serif;
+  background-color: $body-bg;
+  color: $body-color;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top, rgba($info, 0.12), transparent 45%),
+    radial-gradient(circle at 20% 40%, rgba($primary, 0.16), transparent 35%),
+    #040308;
+  color: $body-color;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: none;
+  color: $primary;
+}
+
+.navbar {
+  background: rgba(5, 5, 10, 0.65);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+main.container {
+  max-width: 1200px;
+}
+
+.badge-pill {
+  border-radius: 999px;
+  padding-inline: 0.75rem;
+}
+
+.hero {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  padding: 2rem 0 3rem;
+}
+
+.hero__copy h1 {
+  font-size: clamp(2.5rem, 4vw, 3.5rem);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.hero__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-size: 0.75rem;
+  color: rgba($body-color, 0.7);
+}
+
+.hero__lede {
+  max-width: 36ch;
+  color: rgba($body-color, 0.75);
+}
+
+.stats-grid {
+  margin-top: 1.5rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.stat-card {
+  padding: 1.25rem;
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.stat-card__label {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba($body-color, 0.65);
+}
+
+.stat-card__value {
+  font-size: 2rem;
+  font-weight: 600;
+  display: block;
+}
+
+.hero__spotlight {
+  position: relative;
+  border-radius: 1.5rem;
+  overflow: hidden;
+  min-height: 320px;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.35);
+}
+
+.hero__spotlight img,
+.hero__spotlight-placeholder {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.hero__spotlight-placeholder {
+  background: linear-gradient(135deg, rgba($secondary, 0.5), rgba($primary, 0.4));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+}
+
+.hero__spotlight-pane {
+  position: absolute;
+  inset: auto 1.25rem 1.25rem;
+  padding: 1.25rem;
+  border-radius: 1.25rem;
+  background: rgba(5, 5, 10, 0.8);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.watch-grid {
+  padding-bottom: 3rem;
+}
+
+.watch-grid__list {
+  display: grid;
+  gap: 1.75rem;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+}
+
+.watch-card {
+  position: relative;
+  border-radius: 1.25rem;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 1.75rem 2.5rem rgba(0, 0, 0, 0.45);
+  display: flex;
+  flex-direction: column;
+  transition: transform 200ms ease, border-color 200ms ease;
+}
+
+.watch-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba($primary, 0.4);
+}
+
+.watch-card__art {
+  position: relative;
+  aspect-ratio: 2 / 3;
+  background: linear-gradient(135deg, rgba($secondary, 0.5), rgba($primary, 0.4));
+}
+
+.watch-card__art img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.watch-card__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  color: rgba($body-color, 0.6);
+}
+
+.watch-card__chip {
+  position: absolute;
+  top: 0.75rem;
+  left: 0.75rem;
+  padding: 0.35rem 0.9rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 600;
+  background: rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.watch-card__chip--tv {
+  color: $info;
+}
+
+.watch-card__chip--movie {
+  color: $danger;
+}
+
+.watch-card__chip--rating {
+  left: auto;
+  right: 0.75rem;
+  background: rgba(249, 200, 70, 0.9);
+  color: #1b1405;
+  letter-spacing: normal;
+}
+
+.watch-card__content {
+  padding: 1.5rem;
+}
+
+.watch-card__status {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  color: rgba($body-color, 0.6);
+}
+
+.watch-card__content h2 {
+  font-size: 1.35rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.watch-card__content h2 a {
+  color: inherit;
+}
+
+.watch-card__content h2 a:hover {
+  color: $primary;
+}
+
+.watch-card__date {
+  margin: 0;
+  color: rgba($body-color, 0.6);
+}
+
+.watch-card__tags {
+  margin-top: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+}
+
+.watch-card__tags span {
+  padding: 0.3rem 0.75rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba($body-color, 0.75);
+}
+
+.prose {
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+.prose p + p {
+  margin-top: 1rem;
+}
+
+.watch-hero {
+  border-radius: 1.5rem;
+  overflow: hidden;
+  box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.3);
+}
+
+.watch-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  aspect-ratio: 16 / 9;
+}
+
+.watch-detail-poster img {
+  width: 100%;
+  border-radius: 1rem;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.35);
+}
+
+@media (max-width: 600px) {
+  .watch-card__content {
+    padding: 1.25rem;
+  }
+}
